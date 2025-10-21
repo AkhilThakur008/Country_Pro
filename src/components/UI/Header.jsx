@@ -55,15 +55,12 @@ import React, { useState } from "react";
 import './Header.css'; 
 
 export const Header = () => {
-  
   const [menuOpen, setMenuOpen] = useState(false);
 
- 
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
-  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -71,26 +68,31 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        
         <NavLink to="/" onClick={closeMenu}>WorldAtla</NavLink>
       </div>
 
-      
-      <nav className="menu">
-       
-        <ul className={menuOpen ? "show" : ""}>
-         
-          <li onClick={closeMenu}><NavLink to="/">Home</NavLink></li>
-          <li onClick={closeMenu}><NavLink to="/about">About</NavLink></li>
-          <li onClick={closeMenu}><NavLink to="/contact">Contact</NavLink></li>
-          <li onClick={closeMenu}><NavLink to="/country">Country</NavLink></li>
-        </ul>
-      </nav>
-
-      
+      {/* Hamburger Menu Toggle */}
       <div className="menu-toggle" onClick={toggleMenu}>
         ☰
       </div>
+
+      {/* Navigation Menu */}
+      <nav className="menu">
+        <ul className={menuOpen ? "show" : ""}>
+          <li onClick={closeMenu}>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li onClick={closeMenu}>
+            <NavLink to="/about">About</NavLink>
+          </li>
+          <li onClick={closeMenu}>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+          <li onClick={closeMenu}>
+            <NavLink to="/country">Country</NavLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };
