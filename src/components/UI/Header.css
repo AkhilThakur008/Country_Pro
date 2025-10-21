@@ -65,12 +65,19 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   /* --- FIX 1: Keep header as a ROW --- */
-  .header {
+  /* .header {
     flex-direction: row; 
     align-items: center; 
     padding: 1rem;
-    /* Ensure space-between works with toggle */
+    /* Ensure space-between works with toggle 
     justify-content: space-between; 
+  } */
+  .header {
+    /* These rules force the logo and icon onto the same line */
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; /* Puts one left, one right */
+    align-items: center; 
   }
 
   .menu-toggle {
