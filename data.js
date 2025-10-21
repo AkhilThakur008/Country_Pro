@@ -1,6 +1,5 @@
 export const Homeitem={
-        // bg: "./public/images/world.png",
-        bg: "/Country_Pro/images/world.png",
+        bg: "./public/images/world.png",
         heading: "Welcome to Our Website",
         text: "Discover amazing content and connect with others.",
         buttonText: "Get Started",

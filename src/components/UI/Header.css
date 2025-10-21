@@ -62,33 +62,33 @@
   padding: 1rem;
 }
 
-/* Responsive styles */
+/* --- Responsive styles --- */
 @media (max-width: 768px) {
-  /* --- FIX 1: Keep header as a ROW --- */
-  /* .header {
-    flex-direction: row; 
-    align-items: center; 
-    padding: 1rem;
-    /* Ensure space-between works with toggle 
-    justify-content: space-between; 
-  } */
+  
   .header {
-    /* These rules force the logo and icon onto the same line */
     display: flex;
-    flex-direction: row; 
-    justify-content: space-between; /* Puts one left, one right */
-    align-items: center; 
+    flex-direction: row;
+    justify-content: space-between; /* Logo left, icon right */
+    align-items: center;        /* Vertically center them */
+    padding: 1rem;
+    position: relative; /* Needed for the dropdown */
   }
 
+  /* --- FIX 1: Remove default margins --- */
+  .logo {
+    padding: 0; /* Remove padding to help alignment */
+  }
+
+  .logo h1 {
+    margin: 0; /* THIS IS THE MOST IMPORTANT FIX */
+    font-size: 1.5rem; /* You may need to re-add font size */
+  }
+
+  /* --- FIX 2: Explicitly center the icon --- */
   .menu-toggle {
     display: block;
-    /* --- FIX 2: align-self is not needed --- */
-    align-self: unset; 
-    order: 3; /* Places toggle icon to the far right */
-  }
-
-  .logo {
-    order: 1;
+    align-self: center; /* Override any other alignment rules */
+    padding: 0; /* Remove padding to help alignment */
   }
 
   /* --- FIX 3: Position the menu for a full-width dropdown --- */
@@ -98,7 +98,6 @@
     left: 0;
     width: 100%;
     z-index: 999;
-    order: 2;
   }
 
   .menu ul {
@@ -108,13 +107,10 @@
     background-color: rgb(45, 45, 45);
     border-radius: 8px;
     padding: 1rem 0;
-    margin: 0; /* Ensures it spans full width cleanly */
-    
-    /* Added shadow for better visibility */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
-  /* This class is toggled by React */
   .menu ul.show {
     display: flex;
   }
@@ -122,11 +118,5 @@
   .menu ul li {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    text-align: center;
-  }
-
-  .menu ul li:hover {
-     /* Disable desktop hover effect on mobile */
-    transform: none;
   }
 }
