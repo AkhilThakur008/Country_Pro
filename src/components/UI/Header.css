@@ -1,3 +1,4 @@
+/* Header Styles */
 .header {
   background-color: rgb(38, 38, 38);
   width: 100%;
@@ -8,8 +9,6 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Added for proper stacking context with absolute menu */
-  position: relative; 
 }
 
 .logo {
@@ -21,6 +20,7 @@
 .logo a {
   text-decoration: none;
   color: whitesmoke;
+  display: block;
 }
 
 .menu {
@@ -32,25 +32,28 @@
   display: flex;
   gap: 2rem;
   padding: 1rem;
-  margin: 0; /* Good practice to reset default ul margin */
+  margin: 0;
 }
 
 .menu a {
   text-decoration: none;
   color: rgb(249, 248, 248);
+  transition: color 0.3s ease;
 }
 
 .menu ul li {
   cursor: pointer;
   font-weight: 600;
   font-size: 1.2rem;
-  transition: 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .menu ul li:hover {
-  color: rgb(255, 255, 255);
   transform: scale(1.1);
-  transition: 0.5s;
+}
+
+.menu a:hover {
+  color: rgb(255, 255, 255);
 }
 
 /* Hamburger icon for mobile */
@@ -60,6 +63,9 @@
   color: whitesmoke;
   cursor: pointer;
   padding: 1rem;
+  background: none;
+  border: none;
+  line-height: 1;
 }
 
 /* --- Responsive styles --- */
@@ -68,33 +74,35 @@
   .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Logo left, icon right */
-    align-items: center;        /* Vertically center them */
-    padding: 1rem;
-    position: relative; /* Needed for the dropdown */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    position: sticky;
   }
 
-  /* --- FIX 1: Remove default margins --- */
+  /* Logo adjustments */
   .logo {
-    padding: 0; /* Remove padding to help alignment */
+    padding: 1rem 0;
+    z-index: 1001;
   }
 
   .logo h1 {
-    margin: 0; /* THIS IS THE MOST IMPORTANT FIX */
-    font-size: 1.5rem; /* You may need to re-add font size */
+    margin: 0;
+    font-size: 1.5rem;
   }
 
-  /* --- FIX 2: Explicitly center the icon --- */
+  /* Hamburger menu toggle */
   .menu-toggle {
     display: block;
-    align-self: center; /* Override any other alignment rules */
-    padding: 0; /* Remove padding to help alignment */
+    align-self: center;
+    padding: 0.5rem;
+    z-index: 1001;
   }
 
-  /* --- FIX 3: Position the menu for a full-width dropdown --- */
+  /* Menu dropdown positioning */
   .menu {
     position: absolute;
-    top: 100%; /* Places the menu directly below the header */
+    top: 100%;
     left: 0;
     width: 100%;
     z-index: 999;
@@ -105,10 +113,11 @@
     width: 100%;
     display: none;
     background-color: rgb(45, 45, 45);
-    border-radius: 8px;
+    border-radius: 0 0 8px 8px;
     padding: 1rem 0;
     margin: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    gap: 0;
   }
 
   .menu ul.show {
@@ -116,7 +125,51 @@
   }
 
   .menu ul li {
-    padding: 0.5rem 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    text-align: left;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu ul li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: none;
+  }
+
+  .menu a {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Tablet optimization */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .header {
+    padding: 0 1.5rem;
+  }
+
+  .menu ul {
+    gap: 1.5rem;
+  }
+
+  .menu ul li {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.8rem;
+  }
+
+  .menu ul li {
     font-size: 1rem;
+    padding: 0.8rem 1rem;
   }
 }
