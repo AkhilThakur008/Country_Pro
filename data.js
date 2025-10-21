@@ -1,5 +1,6 @@
 export const Homeitem={
-        bg: "./public/images/world.png",
+        // bg: "./public/images/world.png",
+        bg: "/Country_Pro/images/world.png",
         heading: "Welcome to Our Website",
         text: "Discover amazing content and connect with others.",
         buttonText: "Get Started",
@@ -128,7 +129,7 @@ const links = [
     "id": 2,
     "type": "phone",
     "icon": "📞",
-    "text": "+91 98765 43210"
+    "text": "+91 7009022881"
   },
   {
     "id": 3,
